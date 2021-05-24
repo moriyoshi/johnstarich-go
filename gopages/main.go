@@ -163,8 +163,10 @@ func run(modulePath string, args flags.Args) error {
 		},
 		func() error {
 			pushOpts := &git.PushOptions{}
-			if args.GitHubPagesUser != "" || args.GitHubPagesToken != "" {
+			if args.GitHubPagesUser != "" && args.GitHubPagesToken != "" {
 				pushOpts.Auth = &gitHTTP.BasicAuth{Username: args.GitHubPagesUser, Password: args.GitHubPagesToken}
+			} else if args.GitHubPagesToken != "" {
+				pushOpts.Auth = &gitHTTP.TokenAuth{Token: args.GitHubPagesToken}
 			}
 			err = repo.Push(pushOpts)
 			return errors.Wrap(err, "Failed to push gopages commit")
