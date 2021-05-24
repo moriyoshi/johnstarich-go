@@ -2,6 +2,10 @@ module github.com/johnstarich/go/gopages
 
 go 1.13
 
+replace github.com/johnstarich/go v0.0.0-20210524035134-e473a6664b82 => ../
+
+replace github.com/johnstarich/go/gopages v0.1.7-0.20210524035134-e473a6664b82 => ./
+
 require (
 	github.com/fsnotify/fsnotify v1.4.9
 	github.com/go-git/go-billy/v5 v5.0.0
